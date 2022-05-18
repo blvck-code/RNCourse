@@ -1,82 +1,21 @@
-import { 
-  Button, 
-  FlatList, 
-  StyleSheet,
-  TextInput, 
-  View
-} from 'react-native';
-import { useState } from 'react';
-import GoalItem from './components/GoalItem';
-import GoalInput from './components/GoalInput';
+import { View, Text, StyleSheet } from 'react-native'
+import React from 'react'
+import StartGameScreen from './screens/StartGameScreen'
+import { StatusBar } from 'expo-status-bar'
 
-export default function App() {
-  const [courseGoals, setCourseGoals] = useState([]);
-  const [modalIsVisible, setModalIsVisible] = useState(false);
-
-  const startAddGoalHandler = () => {
-    setModalIsVisible(true);
-  }
-
-  const endAddGoalHandler = () => {
-    setModalIsVisible(false);
-  }
-
-  const addGoalHandler = (enteredGoalText) => {
-
-    setCourseGoals((currentCourseGoals) => [
-      ...currentCourseGoals, 
-      {text: enteredGoalText, id: Math.random().toString()}
-    ]);
-    endAddGoalHandler()
-  }
-
-  const deleteGoalHandler = (id) => {
-    setCourseGoals(currentCourseGoals => {
-      return currentCourseGoals.filter((goal) => goal.id !== id);
-    });
-  } 
-
-
-
+const App = () => {
   return (
-    <View style={styles.appContainer}>
-      <Button 
-        title='Add New Goal' 
-        color='#5e0acc' 
-        onPress={startAddGoalHandler}
-      />
-      <GoalInput visible={modalIsVisible} onAddGoal={addGoalHandler} onCancel={endAddGoalHandler}/>
-      <View style={styles.goalsContainer}>
-        <FlatList 
-          data={courseGoals}
-          renderItem={(itemData) => {
-            return (
-              <GoalItem 
-                text={itemData.item.text} 
-                id={itemData.item.id}
-                onDeleteItem={deleteGoalHandler}
-              />
-            )
-          }}
-          keyExtractor={(item, idx) => {
-            return item.id;
-          }}
-        />
-      </View>
-
+    <View style={styles.rootScreen}>
+      <StartGameScreen />
     </View>
-  );
+  )
 }
 
+export default App
+
 const styles = StyleSheet.create({
-  appContainer: {
-    flex: 1,
-    backgroundColor: '#ddd',
-    paddingTop: 50,
-    paddingHorizontal: 20
-  },
-  goalsContainer: {
-    flex: 6
-  },
-  
-});
+  rootScreen: {
+    backgroundColor: '#ddb52f',
+    flex: 1
+  }
+})
