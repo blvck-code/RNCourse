@@ -21,5 +21,16 @@
   "devDependencies": {
     "@babel/core": "^7.12.9"
   },
-  "private": true
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/blvck-code/RNCourse.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/blvck-code/RNCourse/issues"
+  },
+  "homepage": "https://github.com/blvck-code/RNCourse#readme",
+  "description": ""
 }
